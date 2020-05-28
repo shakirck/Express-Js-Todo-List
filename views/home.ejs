@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>TODO</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h3>TODO APP</h3>
+        
+        <div class="input-container">
+            <form action="/create" method="POST">
+               <div class="row ">
+                <div class="desc-input top-bot width100">
+                <label for="desc">Description</label>
+                <input type="text" name="description" id="desc">
+                </div>
+               </div>
+                <div class="row">
+                   <div class="category-input top-bot">
+                       <label for="dropdown">Category</label>
+                    <select name="category" id="dropdown">
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                    </select>
+                   </div>
+                   <div class="date-input top-bot">
+                       <label for="due-date"> Due Date</label>
+                       <input type="date" name="due" id="due-date">
+                   </div>
+                </div>
+
+                <button type="submit"> ADD</button>
+                <button type="submit" form="view-form">Delete</button>
+                 
+            </form>
+
+            <div class="list-container">
+               <form action="/delete-todo" method="POST" id="view-form">
+                <ul id="todo-list">
+                        
+
+
+                   
+
+                    <% for(let i of list) {%> 
+                        <li class="list-item">
+                            <div class="list-item-container">
+                                <div class="left">
+                                    <input type="checkbox" id="<%= i.id  %>" name="<%= i.id %>"   data-id="<%= i.id %>" id="checkbox" >
+                                     
+                                </div>
+                                <div class="center">
+                                    <p><%= i.description %> </p>
+                                    <p><%= i.due %> </p>
+                                </div>
+                                <div class="right">
+                                    <button class="<%= (i.category)  %>  category-btn"> <%= i.category  %> </button>
+                                </div>
+                            </div>
+                        </li>
+    
+                   
+
+
+                    <% } %> 
+
+                    
+                </ul>
+               </form>
+            </div>
+        </div>
+
+
+    </div>
+    
+</body>
+</html>

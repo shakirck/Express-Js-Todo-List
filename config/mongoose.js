@@ -4,6 +4,7 @@ mongoose.connect('mongodb://localhost/todo-dev');
 
 const db = mongoose.connection;
 
+//When an error occurs while trying to connect a database
 db.on('error',console.error.bind(console,'Error Occured While Connecting to Database'));
 
 

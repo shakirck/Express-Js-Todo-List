@@ -5,35 +5,56 @@
     <meta name="viewport" content="width=`, initial-scale=1.0">
     <title>TODO</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/c0bc4929da.js" crossorigin="anonymous"></script>
+    
 </head>
 <body>
+    
     <div class="container">
-        <h3>TODO APP</h3>
+        <h2>TODO <span style="color: #3abd6f;">APP</span></h2>
         
         <div class="input-container">
             <form action="/create" method="POST">
-               <div class="row ">
-                <div class="desc-input top-bot width100">
-                <label for="desc">Description</label>
-                <input type="text" name="description" id="desc">
-                </div>
-               </div>
-                <div class="row">
-                   <div class="category-input top-bot">
-                       <label for="dropdown">Category</label>
-                    <select name="category" id="dropdown">
-                        <option value="personal">Personal</option>
-                        <option value="work">Work</option>
-                    </select>
+              <div class="input-form">
+                <div class="row ">
+                    <div class="desc-input top-bot width100">
+                    <label for="desc">Description</label>
+                    <textarea  rows="10" cols='30'
+                    name="description" id="desc" placeholder="What's Your Next Plan"></textarea>
+                    </div>
                    </div>
-                   <div class="date-input top-bot">
-                       <label for="due-date"> Due Date</label>
-                       <input type="date" name="due" id="due-date">
-                   </div>
+                    <div class="row">
+                       <div class="category-input top-bot">
+                           <label for="dropdown">Category</label>
+                        <select name="category"  id="dropdown">
+                            <option value="" disabled selected  hidden>Select a Category</option>
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="school">School</option>
+                            <option value="home">Home</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="other">Other</option>
+                       
+                        </select>
+                       </div>
+                       <div class="date-input top-bot">
+                           <label for="due-date"> Due Date</label>
+                           <input type="date" name="due" id="due-date">
+                       </div>
+                    </div>
+    
+                    <div class="form-btns">
+                        <button type="submit" class="submit-btn add-btn"> 
+                            <i class="fas fa-plus"></i>
+                            <h3>ADD</h3>
+                            </button>
+                        <button type="submit" form="view-form" class="submit-btn dlt-btn">
+                            <i class="fas fa-trash-alt"></i>
+                            <h3>Delete</h3>
+                        </button>
+    
+                    </div>
                 </div>
-
-                <button type="submit"> ADD</button>
-                <button type="submit" form="view-form">Delete</button>
                  
             </form>
 
@@ -48,16 +69,18 @@
                     <% for(let i of list) {%> 
                         <li class="list-item">
                             <div class="list-item-container">
-                                <div class="left">
-                                    <input type="checkbox" id="<%= i.id  %>" name="<%= i.id %>"   data-id="<%= i.id %>" id="checkbox" >
-                                     
-                                </div>
-                                <div class="center">
-                                    <p><%= i.description %> </p>
-                                    <p><%= i.due %> </p>
-                                </div>
+                                 
+                                <input class="checkBox" type="checkbox" id="<%= i.id  %>" name="<%= i.id %>"   data-id="<%= i.id %>" id="checkbox" >
+                                <label for="<%=i.id  %>" class="checkmark"></label>
+                                <label for="" class=" center"> 
+                                    <p class="task"><%= i.description %> </p>
+                                    <p class="task task-deadline">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <%= i.due %> </p>
+                                </label>
+                                
                                 <div class="right">
-                                    <button class="<%= (i.category)  %>  category-btn"> <%= i.category  %> </button>
+                                    <button disabled class="<%= (i.category)  %>  category-btn"> <%= i.category  %> </button>
                                 </div>
                             </div>
                         </li>
@@ -75,6 +98,8 @@
 
 
     </div>
-    
+    <script>
+        
+    </script>
 </body>
 </html>

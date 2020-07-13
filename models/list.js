@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-
+//Creating a schema for the database
 const listSchema = new mongoose.Schema({
     description:{
         type:String,
